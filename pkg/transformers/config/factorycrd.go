@@ -68,7 +68,7 @@ func makeNameToApiMap(content []byte) (result nameToApiMap, err error) {
 func makeConfigFromApiMap(m nameToApiMap) (*TransformerConfig, error) {
 	result := MakeEmptyConfig()
 	for name, api := range m {
-		if !looksLikeAk8sType(api.Schema.SchemaProps.Properties) {
+		if !looksLikeAk8sType(myProperties(api.Schema.SchemaProps.Properties)) {
 			continue
 		}
 		tc := MakeEmptyConfig()
